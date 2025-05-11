@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: db/changelog/changes/001-create-prices-table.yaml
       relativeToChangelogFile: false
+  - include:
+      file: db/changelog/changes/002-add-sample-prices-data.yaml
+      relativeToChangelogFile: false

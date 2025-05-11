@@ -2,14 +2,12 @@ package com.jmt.challengeindtx.infrastructure.persistence;
 
 import com.jmt.challengeindtx.domain.model.Price;
 import com.jmt.challengeindtx.domain.port.out.PriceRepository;
-import com.jmt.challengeindtx.infrastructure.persistence.entity.PriceEntity;
 import com.jmt.challengeindtx.infrastructure.persistence.mapper.PriceMapper;
 import com.jmt.challengeindtx.infrastructure.persistence.repository.PriceH2Repository;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**

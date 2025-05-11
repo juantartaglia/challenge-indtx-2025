@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: "001"
+      author: jtartaglia
+      changes:
+        - createTable:
+            tableName: PRICES
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BRAND_ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: START_DATE
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: END_DATE
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRICE_LIST
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRODUCT_ID
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRIORITY
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRICE
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CURR
+                  type: VARCHAR(3)
+                  constraints:
+                    nullable: false
+        - createIndex:
+            indexName: idx_prices_brand_product
+            tableName: PRICES
+            columns:
+              - column:
+                  name: BRAND_ID
+              - column:
+                  name: PRODUCT_ID
+        - createIndex:
+            indexName: idx_prices_dates
+            tableName: PRICES
+            columns:
+              - column:
+                  name: START_DATE
+              - column:
+                  name: END_DATE

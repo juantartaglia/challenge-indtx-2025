@@ -15,7 +15,7 @@ public class Price {
     private BigDecimal price;
     private String curr;
 
-    public Price(long id, long brandId, LocalDateTime startDate, LocalDateTime endDate, Long priceListId, Long productId, Integer priority, BigDecimal price, String curr) {
+    public Price(Long id, long brandId, LocalDateTime startDate, LocalDateTime endDate, Long priceListId, Long productId, Integer priority, BigDecimal price, String curr) {
         this.id = id;
         this.brandId = brandId;
         this.startDate = startDate;
@@ -26,13 +26,15 @@ public class Price {
         this.price = price;
         this.curr = curr;
     }
-    public Price() { }
 
-    public long getId() {
+    public Price() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

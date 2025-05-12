@@ -13,12 +13,12 @@ import java.util.List;
 public interface PriceH2Repository extends JpaRepository<PriceEntity, Long> {
 
     @Query("""
-            SELECT pe FROM PriceEntity pe
-            WHERE
-            pe.productId = :productId AND
-            pe.brandId = :brandId AND
-            (pe.startDate <= :date AND :date <=pe.endDate)
-    """)
+                    SELECT pe FROM PriceEntity pe
+                    WHERE
+                    pe.productId = :productId AND
+                    pe.brandId = :brandId AND
+                    (pe.startDate <= :date AND :date <=pe.endDate)
+            """)
     List<PriceEntity> findByProductIdAndBrandIdAndDate(@Param("productId") Long productId,
                                                        @Param("brandId") Long brandId,
                                                        @Param("date") LocalDateTime date);

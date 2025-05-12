@@ -25,7 +25,7 @@ dependencies {
 	implementation("org.liquibase:liquibase-core")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
-	compileOnly("org.mapstruct:mapstruct:1.5.5.Final")
+	implementation("org.mapstruct:mapstruct:1.5.5.Final")
 
 	runtimeOnly("com.h2database:h2")
 

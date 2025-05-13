@@ -1,0 +1,850 @@
+{
+	"info": {
+		"_postman_id": "c1c09eab-a694-4cac-a840-8536372e4982",
+		"name": "Product Price API Tests",
+		"description": "Batería de pruebas E2E para el API de precios de productos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4998733"
+	},
+	"item": [
+		{
+			"name": "Casos de uso",
+			"item": [
+				{
+					"name": "🟢 Test 1 - 2020-06-14 10:00 (Tarifa 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test1_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test1_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});",
+									"",
+									"pm.test(\"Datos de respuesta correctos\", function () {",
+									"    pm.expect(json.productId).to.eql(parseInt(pm.variables.get(\"productId\")));",
+									"    pm.expect(json.brandId).to.eql(parseInt(pm.variables.get(\"brandId\")));",
+									"    pm.expect(json.dateRange).to.be.an('object');",
+									"    pm.expect(json.dateRange.startDate).to.be.a('string');",
+									"    pm.expect(json.dateRange.endDate).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 2 - 2020-06-14 16:00 (Tarifa 2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test2_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test2_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test2_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test2_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 3 - 2020-06-14 21:00 (Tarifa 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test3_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test3_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test3_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test3_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 4 - 2020-06-15 10:00 (Tarifa 3)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test4_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test4_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test4_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test4_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 5 - 2020-06-16 21:00 (Tarifa 4)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test5_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test5_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test5_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test5_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 6 - Caso Límite Inicio Tarifa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test6_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test6_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test6_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test6_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Test 7 - Caso Límite Fin Tarifa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"const expectedPriceListId = pm.variables.get(\"test7_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test7_price\"));",
+									"",
+									"pm.test(\"Tarifa aplicable debe ser \" + expectedPriceListId, function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"});",
+									"",
+									"pm.test(\"Precio debe ser \" + expectedPrice, function () {",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test7_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test7_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Casos de error",
+			"item": [
+				{
+					"name": "🔴 400 - Falta brandId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 cuando falta brandId\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"El error debe contener mensaje descriptivo\", function () {",
+									"    const responseBody = pm.response.json();",
+									"    pm.expect(responseBody).to.be.an('object');",
+									"    // Verificar la existencia de un mensaje de error - la estructura puede variar",
+									"    // pero asumimos que debería haber algún campo con información",
+									"    pm.expect(Object.keys(responseBody).length).to.be.greaterThan(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔴 400 - Falta applicationDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 cuando falta applicationDate\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔴 400 - applicationDate con formato inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 cuando applicationDate tiene formato inválido\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate=FORMATO_INVALIDO",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "FORMATO_INVALIDO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔴 400 - brandId con formato inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 cuando brandId tiene formato inválido\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId=abc&applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "abc"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔴 404 - productId no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 cuando productId no existe\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/99999/price?brandId={{brandId}}&applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"99999",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔴 404 - brandId no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 cuando brandId no existe\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId=999&applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "999"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Casos adicionales",
+			"item": [
+				{
+					"name": "🟢 Diferentes formatos de fecha",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const json = pm.response.json();",
+									"// Usamos los mismos valores que en test2 ya que es la misma fecha",
+									"const expectedPriceListId = pm.variables.get(\"test2_priceListId\");",
+									"const expectedPrice = parseFloat(pm.variables.get(\"test2_price\"));",
+									"",
+									"pm.test(\"Formato de fecha con Z debe funcionar correctamente\", function () {",
+									"    pm.expect(json.priceListId).to.eql(parseInt(expectedPriceListId));",
+									"    pm.expect(json.price).to.eql(expectedPrice);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate=2020-06-14T16:00:00Z",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "2020-06-14T16:00:00Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🟢 Validar estructura de respuesta completa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const schema = {",
+									"    \"type\": \"object\",",
+									"    \"required\": [\"productId\", \"brandId\", \"priceListId\", \"dateRange\", \"price\"],",
+									"    \"properties\": {",
+									"        \"productId\": { \"type\": \"number\" },",
+									"        \"brandId\": { \"type\": \"number\" },",
+									"        \"priceListId\": { \"type\": \"number\" },",
+									"        \"dateRange\": {",
+									"            \"type\": \"object\",",
+									"            \"required\": [\"startDate\", \"endDate\"],",
+									"            \"properties\": {",
+									"                \"startDate\": { \"type\": \"string\", \"format\": \"date-time\" },",
+									"                \"endDate\": { \"type\": \"string\", \"format\": \"date-time\" }",
+									"            }",
+									"        },",
+									"        \"price\": { \"type\": \"number\" }",
+									"    }",
+									"};",
+									"",
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"Validar estructura de respuesta completa\", function () {",
+									"    // Validaciones básicas de tipo",
+									"    pm.expect(responseJson).to.be.an('object');",
+									"    pm.expect(responseJson.productId).to.be.a('number');",
+									"    pm.expect(responseJson.brandId).to.be.a('number');",
+									"    pm.expect(responseJson.priceListId).to.be.a('number');",
+									"    pm.expect(responseJson.price).to.be.a('number');",
+									"    pm.expect(responseJson.dateRange).to.be.an('object');",
+									"    pm.expect(responseJson.dateRange.startDate).to.be.a('string');",
+									"    pm.expect(responseJson.dateRange.endDate).to.be.a('string');",
+									"    ",
+									"    // Validaciones de formato",
+									"    const startDateRegex = /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$/;",
+									"    const endDateRegex = /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$/;",
+									"    ",
+									"    pm.expect(responseJson.dateRange.startDate).to.match(startDateRegex);",
+									"    pm.expect(responseJson.dateRange.endDate).to.match(endDateRegex);",
+									"    ",
+									"    // Validaciones de valor",
+									"    pm.expect(responseJson.productId).to.eql(parseInt(pm.variables.get(\"productId\")));",
+									"    pm.expect(responseJson.brandId).to.eql(parseInt(pm.variables.get(\"brandId\")));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/{{productId}}/price?brandId={{brandId}}&applicationDate={{test1_date}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								"{{productId}}",
+								"price"
+							],
+							"query": [
+								{
+									"key": "brandId",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "applicationDate",
+									"value": "{{test1_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Script de pre-solicitud global",
+					"// Puedes agregar lógica común aquí si es necesario"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Script de prueba global",
+					"console.log(\"Ejecutando prueba: \" + pm.info.requestName);",
+					"",
+					"// Registrar tiempo de respuesta",
+					"console.log(\"Tiempo de respuesta: \" + pm.response.responseTime + \" ms\");",
+					"",
+					"// Verificar que la respuesta tenga un código de estado esperado",
+					"pm.test(\"La respuesta tiene un código de estado válido\", function () {",
+					"    const expectedCodes = [200, 400, 404];",
+					"    pm.expect(expectedCodes).to.include(pm.response.code);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "productId",
+			"value": "35455",
+			"type": "string"
+		},
+		{
+			"key": "brandId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/product")
 @Validated
-@Tag(name = "Price", description = "API para la gestión de precios")
+@Tag(name = "Product Price Calculator", description = "API para el cálculo de precios")
 public class PriceController {
 
     private final PriceServiceUseCase getPriceUseCase;
@@ -30,7 +30,7 @@ public class PriceController {
     }
 
     @GetMapping("/{product_id}/price")
-    @Operation(summary = "Obtener precio", description = "Obtiene el precio aplicable para un producto en una fecha específica")
+    @Operation(summary = "Obtener precio aplicable", description = "Obtiene el precio aplicable para un producto en una fecha específica")
     public ResponseEntity<PriceResponseDTO> getPrice(
             @Parameter(description = "ID del producto") @PathVariable("product_id") Long productId,
             @Parameter(description = "ID de la marca") @RequestParam @NotNull Long brandId,

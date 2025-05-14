@@ -1,0 +1,26 @@
+# Ignorar salidas de compilación
+build/
+.gradle/
+
+# Ignorar control de versiones
+.git/
+.gitignore
+
+# Ignorar archivos temporales y de sistema
+*.log
+*.class
+*.swp
+*~
+
+# Ignorar IDEs
+.idea/
+*.iml
+.vscode/
+
+# Ignorar archivos de configuración local
+.env
+.DS_Store
+
+# Node/Angular si hay frontend
+node_modules/
+dist/

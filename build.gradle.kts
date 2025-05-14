@@ -31,10 +31,24 @@ dependencies {
 
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(module = "mockito-core")
+	}
+	testImplementation("org.mockito:mockito-junit-jupiter")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		events("passed", "skipped", "failed")
+	}
+}
+
+tasks.test {
+	filter {
+		includeTestsMatching("com.jmt.challengeindtx.*")
+	}
 }
